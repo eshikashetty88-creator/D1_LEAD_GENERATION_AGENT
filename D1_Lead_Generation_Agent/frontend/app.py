@@ -117,19 +117,19 @@ if result:
     st.subheader("🧠 Transparent Scoring")
     for _, row in filtered.iterrows():
         with st.expander(f"{row['company_name']} — {row['icp_score']}/100"):
-            st.write(f"**Qualification:** {row['qualification']}")
+            st.write(f"**Qualification:** {row.get('qualification', 'Needs review')}")
             st.write(row["score_reasoning"])
             st.write(
-                f"Industry {row['industry_points']}/30 • "
-                f"Size {row['size_points']}/20 • "
-                f"Geography {row['geography_points']}/15 • "
-                f"Signals {row['signal_points']}/15 • "
-                f"Technology {row['technology_points']}/10 • "
-                f"Confidence {row['confidence_points']}/10"
+                f"Industry {row.get('industry_points',0)}/30 • "
+                f"Size {row.get('size_points',0)}/20 • "
+                f"Geography {row.get('geography_points',0)}/15 • "
+                f"Signals {row.get('signal_points',0)}/15 • "
+                f"Technology {row.get('technology_points',0)}/10 • "
+                f"Confidence {row.get('confidence_points',0)}/10"
             )
             st.write(f"**Sources:** {row['source_url']}")
-            if row["source_urls"]:
-                for source in row["source_urls"]:
+            if row.get("source_urls",[]):
+                for source in row.get("source_urls",[]):
                     st.write(source)
 
     st.subheader("📥 Exports")
