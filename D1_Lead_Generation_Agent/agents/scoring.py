@@ -126,9 +126,11 @@ Rules:
         lead.icp_score = total
         lead.qualification = result.qualification
         lead.score_reasoning = result.score_reasoning
+        print(f"Gemini scoring successful for {lead.company_name}")
         return lead
-    except Exception:
-        return score_deterministically(lead, icp)
+    except Exception as exc:
+      print(f"Gemini scoring failed: {exc}")
+      return score_deterministically(lead,icp)
 
 
 def score(leads: list[Lead], icp: ICP) -> list[Lead]:
