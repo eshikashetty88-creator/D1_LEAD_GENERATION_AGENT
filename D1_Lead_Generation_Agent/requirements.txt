@@ -1,0 +1,10 @@
+streamlit>=1.49
+fastapi>=0.116
+uvicorn[standard]>=0.35
+langgraph>=0.6
+google-genai>=1.35
+pydantic>=2.8
+python-dotenv>=1.1
+pandas>=2.2
+requests>=2.32
+beautifulsoup4>=4.13
